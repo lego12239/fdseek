@@ -1,0 +1,54 @@
+OVERVIEW
+========
+
+fdseek is a wrapper for lseek() libc function, which is intended for use
+in shell scripts.
+
+
+SYNOPSIS
+========
+
+fdseek FD [OFFSET [WHENCE]]
+fdseek -h
+fdseek -v
+
+
+DESCRIPTION
+===========
+
+fdseek set fd offset according to specified command line arguments and after
+this prints a current fd offset to stdout.
+
+FD should be a file descriptor number. OFFSET is a byte offset for
+specified FD (can be negative, which is meaningful for WHENCE 'end' and 'cur').
+0 is a first byte of FD. WHENCE can be a 'start', 'cur' or 'end'.
+'start' - set fd offset to OFFSET bytes from a start. 'cur' - set fd offset to
+OFFSET bytes from a current position. 'end' - set fd offset to OFFSET bytes
+from an end.
+
+If WHENCE isn't specified, then it by default is 'start'. So, 'fdseek 0 3' is
+equals to 'fdseek 0 3 start'.
+
+If WHENCE and OFFSET aren't specified, then they by default are 'cur' and 0
+accordingly. So, 'fdseek 0' is equals to 'fdseek 0 0 cur'. This short form is
+convenient when we want to just get a current offset without changing it.
+
+
+EXIT STATUS
+===========
+
+On any error (command line argument is wrong or lseek() is failed) fdseek
+exits with code 1.
+
+Without errors exit code is 0.
+
+
+EXAMPLE
+=======
+
+#!/bin/bash
+
+exec 3< some.data
+./fdseek 3 10 start
+read line
+echo $line
