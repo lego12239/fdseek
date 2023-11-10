@@ -53,7 +53,7 @@ show_usage(void)
 	printf("Usage: fdseek FD [OFFSET [WHENCE]]\n");
 	printf("Usage: fdseek [OPTIONS]\n\n");
 	printf("If OFFSET and WHENCE are absent, then show current fd offset.\n");
-	printf("If OFFSET is present, then set fd offset to it.\n");
+	printf("If OFFSET is present, then set fd offset relative to WHENCE.\n");
 	printf("WHENCE is one of START|start, CUR|cur or END|end.\n");
 	printf("WHENCE by default is 'start'.\n");
 	printf("OPTIONS:\n");
