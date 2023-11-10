@@ -1,5 +1,5 @@
 /*
- * Version 1.0
+ * Version 1.0.1
  *
  * Copyright 2023 Oleg Nemanov <lego12239@yandex.ru>
  *
@@ -39,7 +39,7 @@
 #include <stdlib.h>
 
 
-#define VERSION "1.0"
+#define VERSION "1.0.1"
 #define ERR_OUT(fmt, ...) fprintf(stderr, fmt "\n", ##__VA_ARGS__)
 #define ERR_EXIT(fmt, ...) do {\
   ERR_OUT(fmt, ##__VA_ARGS__);\
